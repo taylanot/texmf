@@ -12,3 +12,5 @@ pdflatex $FILENAME
 pdflatex $FILENAME
 
 mv -f *.aux *.bbl *.blg *.log *.toc *.soc *.loc *.out .temp/
+
+xdg-open $PWD/main.pdf

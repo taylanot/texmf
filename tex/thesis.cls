@@ -167,33 +167,10 @@
 %% preceded by half an empty line.
 \dottedcontents{chapter}[1.5em]{\vspace{0.5\baselineskip}\bfseries}{1.5em}{0pc}
 
-%% Section titles start with the number in bold, followed by the name printed
-%% in the title color.
-\titleformat{\section}
-    {\Large\sectitlestyle}
-    {\bfseries\thesection.\ }
-    {0pt}
-    {\color{title}}
-%% Sections are preceded by an empty line.
-\titlespacing{\section}{0pt}{\baselineskip}{0pt}
-%% In the table of contents, section names are followed by a line of dots 8pt
-%% apart.
-\dottedcontents{section}[3.8em]{\titlefont}{2.3em}{8pt}
-
-%% Subsection titles have the same layout as section titles, except in a smaller
-%% font.
-\titleformat{\subsection}
-    {\large\sectitlestyle}
-    {\bfseries\thesubsection.\ }
-    {0pt}
-    {\color{title}}
-\titlespacing{\subsection}{0pt}{\baselineskip}{0pt}
-\dottedcontents{subsection}[7em]{\titlefont}{3.2em}{8pt}
-
 %% Subsubsections have the same font and color as sections and subsections, but
 %% are not preceded by a number.
 \titleformat{\subsubsection}
-    {\headerstyle}
+    {\bfseries}
     {}
     {0pt}
     {\color{title}}
