@@ -53,6 +53,51 @@
 \RequirePackage{xkeyval}
 \RequirePackage[export]{adjustbox}
 \def\@largetitlesize{24pt}
+\RequirePackage[T1]{fontenc}
+\RequirePackage[utf8]{inputenc}
+%    \RequirePackage{lmodern}
+\if@roman
+%      \RequirePackage{lato}
+%      \RequirePackage{helvet}
+\RequirePackage[thin]{roboto}
+\RequirePackage{fourier}
+\else
+\RequirePackage[thin]{roboto}
+%      \RequirePackage[default]{lato}
+\RequirePackage{helvet}
+\renewcommand{\familydefault}{\sfdefault}
+\fi
+\def\largetitlefont{\fontfamily{Roboto-LF}}
+\def\largetitleseries{\fontseries{t}}
+\def\largetitleshape{\fontshape{n}}
+\def\largetitlestyle{\largetitleseries\largetitleshape}
+\def\titleshape{\fontshape{n}}
+\if@roman
+\renewcommand{\familydefault}{\rmdefault}
+\def\titlefont{\fontfamily{fla}}
+\def\sectitleshape{\fontshape{n}}
+\def\sectitlestyle{\rmfamily\titleshape\bfseries}%{\familydefault\bfseries}
+\def\chaptitlestyle{\rmfamily\titleshape}
+\else
+%        \renewcommand{\familydefault}{\tudsffamily}
+%        \def\titleshape{\fontshape{n}}
+\def\titlefont{\fontfamily{fla}}
+\def\sectitlestyle{\sffamily\titleshape\bfseries}%        \def\sectitlestyle{\titleshape\bfseries}
+\def\chaptitlestyle{\sffamily\titleshape}
+\fi
+%    \def\largetitleshape{\upshape}
+%    \if@print
+\def\titlestyle{\titlefont\titleshape}
+%    \else
+%        \def\titlestyle{\titlefont\titleshape}
+%        \def\sectitlestyle{\sffamily\titleshape\bfseries}
+%    \fi
+%    \def\titlestyle{\titlefont\titleshape\bfseries}
+%    \if@print
+%        \def\headerstyle{\titlefont\titleshape\bfseries}
+%    \else
+\def\headerstyle{\titlefont}
+%    \fi
 
 
 %% Define the TU Delft house style colors.
@@ -159,8 +204,6 @@
 %% Chapter titles have the same layout as parts.
 \newcommand{\hsp}{\hspace{25pt}}
 \titleformat{\chapter}[hang]{\Huge\bfseries}{\thechapter\hsp{|}\hsp}{0pt}{\Huge\bfseries}
-
-
 
 
 %% In the table of contents, a chapter is similar to a part, except that it is
