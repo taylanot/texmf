@@ -19,7 +19,7 @@
 \ExecuteOptions{english}
 \ProcessOptions\relax
 
-\LoadClass[10pt]{book}
+\LoadClass[12pt]{book}
 
 \RequirePackage{amsmath}
 \RequirePackage{amssymb}
@@ -53,20 +53,21 @@
 \RequirePackage{xkeyval}
 \RequirePackage[export]{adjustbox}
 \def\@largetitlesize{24pt}
-\RequirePackage[T1]{fontenc}
-\RequirePackage[utf8]{inputenc}
-%    \RequirePackage{lmodern}
-\if@roman
-%      \RequirePackage{lato}
-%      \RequirePackage{helvet}
-\RequirePackage[thin]{roboto}
-\RequirePackage{fourier}
-\else
-\RequirePackage[thin]{roboto}
-%      \RequirePackage[default]{lato}
-\RequirePackage{helvet}
+
+%\RequirePackage[T1]{fontenc}
+%\RequirePackage[utf8]{inputenc}
+%%    \RequirePackage{lmodern}
+%\if@roman
+%%      \RequirePackage{lato}
+%%      \RequirePackage{helvet}
+%\RequirePackage[thin]{roboto}
+%\RequirePackage{fourier}
+%\else
+%\RequirePackage[thin]{roboto}
+%%      \RequirePackage[default]{lato}
+%\RequirePackage{helvet}
 \renewcommand{\familydefault}{\sfdefault}
-\fi
+%\fi
 \def\largetitlefont{\fontfamily{Roboto-LF}}
 \def\largetitleseries{\fontseries{t}}
 \def\largetitleshape{\fontshape{n}}
