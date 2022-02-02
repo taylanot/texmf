@@ -11,6 +11,6 @@ bibtex $base
 pdflatex $FILENAME
 pdflatex $FILENAME
 
-mv -f *.aux *.bbl *.blg *.log *.toc *.soc *.loc *.out *.nav *.snm .temp/
+mv -f *.aux *.bbl *.blg *.log *.toc *.soc *.loc *.out *.nav *.snm *.xml *.bib .temp/
 
 #xdg-open $PWD/main.pdf
