@@ -3,8 +3,13 @@ mkdir -p $PWD/.temp
 FILENAME=$PWD'/main.tex'
 
 
+if [ "$#" -eq  "0" ]
+  then
+    pdflatex $FILENAME
+else
 
-pdflatex $FILENAME
+    pdflatex -jobname $1 $FILENAME
+fi
 base=$(basename $FILENAME .tex)
 echo $base
 bibtex $base
