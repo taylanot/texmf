@@ -5,10 +5,10 @@ FILENAME=$PWD'/main.tex'
 
 if [ "$#" -eq  "0" ]
   then
-    pdflatex $FILENAME
+    pdflatex -shell-escape  $FILENAME 
 else
 
-    pdflatex -jobname $1 $FILENAME
+    pdflatex -shell-escape -jobname $1 $FILENAME 
 fi
 base=$(basename $FILENAME .tex)
 echo $base
