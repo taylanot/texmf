@@ -1,21 +1,14 @@
-mkdir -p $PWD/.temp
+mkdir -p "$PWD/.temp"
 
-FILENAME=$PWD'/main.tex'
+# Set default filename if no argument is provided
+FILENAME=${1:-"$PWD/main.tex"}
+JOBNAME=$(basename "$FILENAME" .tex)
 
+pdflatex -shell-escape -jobname "$JOBNAME" "$FILENAME"
 
-if [ "$#" -eq  "0" ]
-  then
-    pdflatex -shell-escape  $FILENAME 
-else
+bibtex "$JOBNAME"
 
-    pdflatex -shell-escape -jobname $1 $FILENAME 
-fi
-base=$(basename $FILENAME .tex)
-echo $base
-bibtex $base
-pdflatex $FILENAME
-pdflatex $FILENAME
+pdflatex "$FILENAME"
+pdflatex "$FILENAME"
 
 mv -f *.aux *.auxlock *.bbl *.blg *.log *.toc *.soc *.loc *.out *.nav *.snm *.xml *.abs *.spl .temp/
-
-#xdg-open $PWD/main.pdf
