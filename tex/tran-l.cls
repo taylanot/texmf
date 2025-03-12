@@ -29,12 +29,7 @@
 
 \LoadClass{amsart}[1996/10/24]
 
-\def\publname{TRANSACTIONS OF THE\newline
-  PATTERN RECOGNITION LABORATORY}
 
-\def\ISSN{0002-9947}
 
-\copyrightinfo{\currentyear}%    % copyright year
-  {PRLab}% copyright holder
 
 \endinput
