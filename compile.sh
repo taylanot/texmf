@@ -11,4 +11,4 @@ bibtex "$JOBNAME"
 pdflatex "$FILENAME"
 pdflatex "$FILENAME"
 
-mv -f *.aux *.auxlock *.bbl *.blg *.log *.toc *.soc *.loc *.out *.nav *.snm *.xml *.abs *.spl .temp/
+mv -f *.aux *.auxlock *.bbl *.blg *.log *.toc *.soc *.loc *.out *.nav *.snm *.xml *.abs *.spl *.bcf .temp/
