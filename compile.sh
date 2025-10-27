@@ -50,6 +50,7 @@ echo "✅ Compilation successful. Cleaning up auxiliary files..."
 # Remove all common aux/log files except .pdf
 rm -f \
     "${BASENAME}.aux" \
+    "${BASENAME}.log" \
     "${BASENAME}.auxlock" \
     "${BASENAME}.bbl" \
     "${BASENAME}.blg" \
