@@ -51,7 +51,7 @@ EOF
 
     # Compile quietly
     echo "🧩 Compiling $basename to PDF..."
-    pdflatex -interaction=nonstopmode -output-directory "$OUTPUT_DIR" "$tmpfile" > /dev/null 2>&1
+    lualatex -interaction=nonstopmode -output-directory "$OUTPUT_DIR" "$tmpfile" > /dev/null 2>&1
 
     # Rename output to match original name
     if [ -f "${OUTPUT_DIR}/${basename}_standalone.pdf" ]; then
