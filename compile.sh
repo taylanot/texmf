@@ -111,20 +111,20 @@ pdflatex -interaction=nonstopmode "$FILENAME" > /dev/null 2>&1
 
 echo "✅ Compilation successful. Cleaning up auxiliary files..."
 rm -f \
-    "${BASENAME}.aux" \
-    "${BASENAME}.log" \
-    "${BASENAME}.auxlock" \
-    "${BASENAME}.bbl" \
-    "${BASENAME}.blg" \
-    "${BASENAME}.toc" \
-    "${BASENAME}.soc" \
-    "${BASENAME}.loc" \
-    "${BASENAME}.out" \
-    "${BASENAME}.nav" \
-    "${BASENAME}.snm" \
-    "${BASENAME}.xml" \
-    "${BASENAME}.abs" \
-    "${BASENAME}.spl" \
-    "${BASENAME}.bcf"
+    *.aux \
+    *.log \
+    *.auxlock \
+    *.bbl \
+    *.blg \
+    *.toc \
+    *.soc \
+    *.loc \
+    *.out \
+    *.nav \
+    *.snm \
+    *.xml \
+    *.abs \
+    *.spl \
+    *.bcf
 
 echo "🎉 Done! Output PDF: ${BASENAME}.pdf"
