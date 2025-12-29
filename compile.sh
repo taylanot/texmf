@@ -96,7 +96,7 @@ echo "📄 Compiling $FILENAME using $BIB_BACKEND ..."
 echo
 
 # --- First pdflatex pass ---
-pdflatex -shell-escape -jobname "$BASENAME" "$FILENAME"
+xelatex -shell-escape -jobname "$BASENAME" "$FILENAME"
 
 # --- Bibtex / Biber ---
 if [ "$BIB_BACKEND" = "biber" ]; then
@@ -106,8 +106,8 @@ else
 fi
 
 # --- Subsequent pdflatex passes ---
-pdflatex -interaction=nonstopmode "$FILENAME" > /dev/null 2>&1
-pdflatex -interaction=nonstopmode "$FILENAME" > /dev/null 2>&1
+xelatex -interaction=nonstopmode "$FILENAME" > /dev/null 2>&1
+xelatex -interaction=nonstopmode "$FILENAME" > /dev/null 2>&1
 
 echo "✅ Compilation successful. Cleaning up auxiliary files..."
 rm -f \
