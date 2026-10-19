@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 set -eu
 
 # --- Input file ---
@@ -9,38 +10,50 @@ fi
 
 BASENAME=$(basename "$FILENAME" .tex)
 
+# --- Output directory and file ---
+OUTPUT_DIR=${2:-"."}
+mkdir -p "$OUTPUT_DIR"
+
+OUTPUT_PDF=${3:-"${BASENAME}.pdf"}
+JOBNAME=$(basename "$OUTPUT_PDF" .pdf)
+
 echo "📄 Compiling $FILENAME ..."
+echo "📁 Output directory: $OUTPUT_DIR"
+echo "📄 Output PDF name: ${JOBNAME}.pdf"
 echo
 
 # --- First pdflatex pass ---
-pdflatex  -shell-escape -jobname "$BASENAME" "$FILENAME" 
+pdflatex -shell-escape -output-directory="$OUTPUT_DIR" -jobname="$JOBNAME" "$FILENAME" 
 
 # --- Bibtex ---
-biber "$BASENAME"  || echo "⚠️ Bibtex failed or not needed."
+cd "$OUTPUT_DIR"
+biber "$JOBNAME" || echo "⚠️ Bibtex failed or not needed."
+cd - > /dev/null
 
 # --- Subsequent pdflatex passes ---
-pdflatex -interaction=nonstopmode "$FILENAME" > /dev/null 2>&1
-pdflatex -interaction=nonstopmode "$FILENAME" > /dev/null 2>&1
+pdflatex -interaction=nonstopmode -output-directory="$OUTPUT_DIR" -jobname="$JOBNAME" "$FILENAME" > /dev/null 2>&1
+pdflatex -interaction=nonstopmode -output-directory="$OUTPUT_DIR" -jobname="$JOBNAME" "$FILENAME" > /dev/null 2>&1
 
 
 echo "✅ Compilation successful. Cleaning up auxiliary files..."
 # Remove all common aux/log files except .pdf
+cd "$OUTPUT_DIR"
 rm -f \
-    "${BASENAME}.aux" \
-    "${BASENAME}.log" \
-    "${BASENAME}.auxlock" \
-    "${BASENAME}.bbl" \
-    "${BASENAME}.blg" \
-    "${BASENAME}.toc" \
-    "${BASENAME}.soc" \
-    "${BASENAME}.loc" \
-    "${BASENAME}.out" \
-    "${BASENAME}.nav" \
-    "${BASENAME}.snm" \
-    "${BASENAME}.xml" \
-    "${BASENAME}.abs" \
-    "${BASENAME}.spl" \
-    "${BASENAME}.bcf"
+    "${JOBNAME}.aux" \
+    "${JOBNAME}.log" \
+    "${JOBNAME}.auxlock" \
+    "${JOBNAME}.bbl" \
+    "${JOBNAME}.blg" \
+    "${JOBNAME}.toc" \
+    "${JOBNAME}.soc" \
+    "${JOBNAME}.loc" \
+    "${JOBNAME}.out" \
+    "${JOBNAME}.nav" \
+    "${JOBNAME}.snm" \
+    "${JOBNAME}.xml" \
+    "${JOBNAME}.abs" \
+    "${JOBNAME}.spl" \
+    "${JOBNAME}.bcf"
+cd - > /dev/null
 
-echo "🎉 Done! Output PDF: ${BASENAME}.pdf"
-
+echo "🎉 Done! Output PDF: ${OUTPUT_DIR}/${JOBNAME}.pdf"
